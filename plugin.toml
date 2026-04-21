@@ -1,0 +1,19 @@
+[plugin]
+name = "fledge-plugin-figma"
+version = "0.1.0"
+description = "Sync Figma design tokens, export component specs, and diff design changes"
+author = "CorvidLabs"
+
+[[commands]]
+name = "figma"
+description = "Sync design tokens and assets from Figma"
+binary = "bin/fledge-figma"
+
+[[commands]]
+name = "figma-diff"
+description = "Diff design token changes between Figma and local files"
+binary = "bin/fledge-figma-diff"
+
+[hooks]
+post_install = "hooks/post-install.sh"
+post_remove = "hooks/post-remove.sh"

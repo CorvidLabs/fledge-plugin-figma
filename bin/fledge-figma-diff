@@ -1,0 +1,70 @@
+#!/usr/bin/env sh
+# fledge-figma-diff — diff design token changes between Figma and local files
+# Invoked via: fledge figma-diff [file-key]
+
+set -e
+
+FIGMA_TOKEN="${FIGMA_TOKEN:-}"
+CONFIG_FILE="figma.toml"
+
+if [ -z "$FIGMA_TOKEN" ]; then
+    echo "Error: FIGMA_TOKEN environment variable is required."
+    exit 1
+fi
+
+figma_api() {
+    curl -sf -H "X-Figma-Token: $FIGMA_TOKEN" "https://api.figma.com/v1$1"
+}
+
+FILE_KEY="$1"
+OUTPUT_DIR="tokens"
+
+if [ -z "$FILE_KEY" ] && [ -f "$CONFIG_FILE" ]; then
+    FILE_KEY=$(grep 'file_key' "$CONFIG_FILE" 2>/dev/null | head -1 | sed 's/.*= *"\(.*\)"/\1/')
+fi
+
+if [ -f "$CONFIG_FILE" ]; then
+    CONFIGURED_DIR=$(grep 'output_dir' "$CONFIG_FILE" 2>/dev/null | head -1 | sed 's/.*= *"\(.*\)"/\1/')
+    [ -n "$CONFIGURED_DIR" ] && OUTPUT_DIR="$CONFIGURED_DIR"
+fi
+
+if [ -z "$FILE_KEY" ]; then
+    echo "Error: No file key provided."
+    echo "Usage: fledge figma-diff <file-key>"
+    echo "Or set file_key in figma.toml"
+    exit 1
+fi
+
+LOCAL_FILE="$OUTPUT_DIR/tokens.json"
+if [ ! -f "$LOCAL_FILE" ]; then
+    echo "No local tokens found at $LOCAL_FILE"
+    echo "Run 'fledge figma sync' first to create a baseline."
+    exit 1
+fi
+
+echo "🔍 Fetching current Figma styles..."
+REMOTE_STYLES=$(figma_api "/files/$FILE_KEY/styles")
+
+if [ $? -ne 0 ] || [ -z "$REMOTE_STYLES" ]; then
+    echo "Error: Failed to fetch styles from Figma."
+    exit 1
+fi
+
+TEMP_FILE=$(mktemp)
+echo "$REMOTE_STYLES" > "$TEMP_FILE"
+
+echo ""
+echo "📊 Design Token Diff"
+echo "━━━━━━━━━━━━━━━━━━━━"
+
+if diff -q "$LOCAL_FILE" "$TEMP_FILE" > /dev/null 2>&1; then
+    echo "✓ No changes — local tokens match Figma."
+else
+    echo "Changes detected:"
+    echo ""
+    diff --unified "$LOCAL_FILE" "$TEMP_FILE" 2>/dev/null || true
+    echo ""
+    echo "Run 'fledge figma sync' to update local tokens."
+fi
+
+rm -f "$TEMP_FILE"
