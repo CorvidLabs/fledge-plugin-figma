@@ -55,8 +55,9 @@ output_dir = "specs"
 ## Output Formats
 
 - **css** — CSS custom properties (`:root { --color-primary: ... }`)
+- **scss** — Sass variables (`$color-primary: ...`)
+- **tailwind** — Tailwind CSS theme extension (`tokens.tailwind.js`)
 - **json** — Raw Figma style data
-- **scss** / **tailwind** — Coming soon
 
 ## Requirements
 

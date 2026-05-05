@@ -43,9 +43,9 @@ if [ ! -f "$LOCAL_FILE" ]; then
 fi
 
 echo "🔍 Fetching current Figma styles..."
-REMOTE_STYLES=$(figma_api "/files/$FILE_KEY/styles")
+REMOTE_STYLES=$(figma_api "/files/$FILE_KEY/styles") || true
 
-if [ $? -ne 0 ] || [ -z "$REMOTE_STYLES" ]; then
+if [ -z "$REMOTE_STYLES" ]; then
     echo "Error: Failed to fetch styles from Figma."
     exit 1
 fi
