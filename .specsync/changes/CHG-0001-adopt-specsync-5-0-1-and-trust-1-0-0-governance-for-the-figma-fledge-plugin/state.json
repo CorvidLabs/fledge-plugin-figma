@@ -6,9 +6,10 @@
   "description": "Adopt SpecSync 5.0.1 and Trust 1.0.0 governance for the Figma Fledge plugin",
   "kind": "migration",
   "state": "accepted",
+  "canonical_applied": true,
   "base_commit": "f170330cf8e03c1736d8332c67d0f29497d37e44",
   "created_at": 1783877991,
-  "updated_at": 1783954149,
+  "updated_at": 1783982785,
   "affected_specs": [
     "figma"
   ],

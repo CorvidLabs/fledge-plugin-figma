@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "CHG-0002-correct-figma-agent-argument-handling-and-plugin-contract-path-governance",
+  "slug": "correct-figma-agent-argument-handling-and-plugin-contract-path-governance",
+  "title": "Correct Figma agent argument handling and plugin contract path governance",
+  "description": "Correct Figma agent argument handling and plugin contract path governance",
+  "kind": "bug_fix",
+  "state": "accepted",
+  "canonical_applied": true,
+  "base_commit": "ce4c21c4256674609fcb02de4e0bf510c5197dae",
+  "created_at": 1783982709,
+  "updated_at": 1783982784,
+  "affected_specs": [],
+  "affected_paths": [
+    ".claude/commands/specsync/create-spec.md",
+    ".cursor/commands/specsync-create-spec.md",
+    ".gemini/commands/specsync/create-spec.toml",
+    ".gemini/commands/specsync/create-change.toml",
+    ".specsync/sdd.json"
+  ],
+  "no_spec_change": true,
+  "no_spec_change_rationale": "These corrections affect generated contributor guidance and governance path coverage, not the Figma plugin runtime contract or behavior.",
+  "acceptance_criteria": [
+    "Claude",
+    "Cursor",
+    "and Gemini classify the complete post-flag input before choosing a module name; Gemini change creation uses its displayed raw arguments with one shell-escaping step; plugin.toml",
+    "README.md",
+    "and docs are meaningful lifecycle paths; native verification and strict SpecSync 100% coverage pass"
+  ],
+  "selected_artifacts": [
+    "context",
+    "testing",
+    "tasks",
+    "design"
+  ],
+  "dependencies": [],
+  "answers": {
+    "architecture_risk": "no",
+    "public_contract": "no"
+  }
+}

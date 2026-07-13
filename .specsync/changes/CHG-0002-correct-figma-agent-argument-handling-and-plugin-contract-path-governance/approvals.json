@@ -1,0 +1,19 @@
+{
+  "approvals": [
+    {
+      "gate": "definition",
+      "actor": "user:0xLeif",
+      "timestamp": 1783982762,
+      "digest": "4f77a1deb3d19619b31c5fc047eb9a0b585a4ff83e69ece2046d0d61876e5b66",
+      "note": "Approved portable definition for Figma governance-only review corrections"
+    },
+    {
+      "gate": "acceptance",
+      "actor": "user:0xLeif",
+      "timestamp": 1783982784,
+      "digest": "7e9dbdad1e47f2061580dddfd3b98a85ca192bbcb3ad82644a08c875ff703a4a",
+      "note": "Closing approval after agent-flow review, native hook smoke, and governance-path verification"
+    }
+  ],
+  "reopenings": []
+}
