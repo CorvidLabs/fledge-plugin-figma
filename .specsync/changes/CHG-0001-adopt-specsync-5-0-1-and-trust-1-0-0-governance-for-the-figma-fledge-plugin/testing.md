@@ -8,6 +8,7 @@ artifact: testing
 - `shellcheck bin/* hooks/*`
 - `bin/fledge-figma help`
 - Install and remove hook smokes
+- `REQ-figma-001` evidence is the offline install/remove hook smoke coverage.
 - `specsync check --strict --force` at advisory threshold 0
 - `fledge trust doctor` and `fledge trust verify`
 - Live sync/export/diff remains independently credentialed
