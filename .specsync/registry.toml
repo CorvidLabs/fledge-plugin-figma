@@ -1,0 +1,5 @@
+[registry]
+name = "fledge-plugin-figma-trust-wave4"
+
+[specs]
+figma = "specs/figma/figma.spec.md"

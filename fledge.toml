@@ -1,0 +1,10 @@
+# fledge.toml: project task definitions
+[tasks]
+lint = "shellcheck bin/* hooks/*"
+help = "bin/fledge-figma help"
+install-hook = "hooks/post-install.sh"
+remove-hook = "hooks/post-remove.sh"
+
+[lanes.verify]
+description = "Lint and safely smoke-test Figma help and lifecycle hooks"
+steps = ["lint", "help", "install-hook", "remove-hook"]

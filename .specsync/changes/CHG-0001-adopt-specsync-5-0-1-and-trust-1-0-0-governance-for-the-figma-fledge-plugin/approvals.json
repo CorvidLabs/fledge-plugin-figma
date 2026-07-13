@@ -1,0 +1,63 @@
+{
+  "approvals": [
+    {
+      "gate": "definition",
+      "actor": "user:0xLeif",
+      "timestamp": 1783953989,
+      "digest": "68203d03c0fadc42a8b384fd4b61552e03c4044224fe4aaa595d7006a4184cff",
+      "note": "Definition approved after artifact, review-correction, and preliminary native-verification audit."
+    },
+    {
+      "gate": "acceptance",
+      "actor": "user:0xLeif",
+      "timestamp": 1783954149,
+      "digest": "09389828420582a16d69f53ba58457ebbde5aac0b1392cde06856f87ff530456",
+      "note": "Closing approval recorded after successful committed-head native verification with explicit requirement evidence."
+    },
+    {
+      "gate": "acceptance",
+      "actor": "user:0xLeif",
+      "timestamp": 1783982785,
+      "digest": "cc196942700a778c4f700adc8629c5834c84e1f8906d377a2d3584d172756f54",
+      "note": "Fresh closing approval after CHG-0002 native verification; prior canonical delta remains non-replaying"
+    }
+  ],
+  "reopenings": [
+    {
+      "schema_version": 1,
+      "change_id": "CHG-0001-adopt-specsync-5-0-1-and-trust-1-0-0-governance-for-the-figma-fledge-plugin",
+      "actor": "user:0xLeif",
+      "reason": "CHG-0002 corrects shared agent guidance and governance inputs after review; record fresh evidence without replaying the accepted canonical delta",
+      "timestamp": 1783982784,
+      "from_state": "accepted",
+      "to_state": "verifying",
+      "superseded_approval": {
+        "gate": "acceptance",
+        "actor": "user:0xLeif",
+        "timestamp": 1783954149,
+        "digest": "09389828420582a16d69f53ba58457ebbde5aac0b1392cde06856f87ff530456",
+        "note": "Closing approval recorded after successful committed-head native verification with explicit requirement evidence."
+      },
+      "prior_verification": {
+        "timestamp": 1783954104,
+        "commit": "78eee4de726dac879258964b7415809f56eb2686",
+        "contract_digest": "68203d03c0fadc42a8b384fd4b61552e03c4044224fe4aaa595d7006a4184cff",
+        "workspace_digest": "5c42feea5736b174c72c2056cd0c4cb30be31ba0447c088d18e291c206044422",
+        "acceptance_input_digest": "ac9118548b1fa12236fc8ac4e53677341118ebf59c7e33fbc8d0da2bd57b2e53",
+        "passed": true,
+        "commands": [
+          {
+            "command": "fledge lanes run verify",
+            "success": true,
+            "exit_code": 0
+          }
+        ],
+        "requirement_ids": [
+          "REQ-figma-001"
+        ]
+      },
+      "stale_acceptance_input_digest": "ac9118548b1fa12236fc8ac4e53677341118ebf59c7e33fbc8d0da2bd57b2e53",
+      "current_acceptance_input_digest": "aa7f067bd10a2ce9a1a79e769d832b140f87ac976c744080e7f849aebf881dbb"
+    }
+  ]
+}
