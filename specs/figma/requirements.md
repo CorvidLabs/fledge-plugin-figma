@@ -13,6 +13,10 @@ spec: figma.spec.md
 
 The plugin SHALL initialize configuration without a token and refuse to overwrite an existing file.
 
+Acceptance Criteria
+- The offline install and remove hook smokes complete without a Figma token.
+- Existing user configuration remains outside destructive lifecycle-hook behavior.
+
 ### REQ-figma-002
 
 Live actions SHALL require a Figma token and SHALL never print it.

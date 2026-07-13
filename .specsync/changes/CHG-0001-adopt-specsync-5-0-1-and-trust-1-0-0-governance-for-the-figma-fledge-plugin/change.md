@@ -1,6 +1,6 @@
 ---
 id: CHG-0001-adopt-specsync-5-0-1-and-trust-1-0-0-governance-for-the-figma-fledge-plugin
-state: implementing
+state: accepted
 type: migration
 base_commit: f170330cf8e03c1736d8332c67d0f29497d37e44
 ---
