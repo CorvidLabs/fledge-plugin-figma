@@ -1,6 +1,6 @@
 ---
 id: CHG-0002-correct-figma-agent-argument-handling-and-plugin-contract-path-governance
-state: accepted
+state: archived
 type: bug_fix
 base_commit: ce4c21c4256674609fcb02de4e0bf510c5197dae
 ---
